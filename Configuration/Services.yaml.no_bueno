@@ -1,0 +1,12 @@
+# copy this to Configuration/Services.yaml
+# this variant does not work in combination with XCLASS
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Sypets\SypetsXclassDi\:
+    resource: '../Classes/*'
+
+  TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer: '@Sypets\SypetsXclassDi\Backend\PreviewRenderer\Hook\StandardContentPreviewRenderer'

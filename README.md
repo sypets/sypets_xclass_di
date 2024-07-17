@@ -2,6 +2,9 @@
 
 The following was tested in TYPO3 v11, specifically 11.5.38.
 
+It does not work, an error occurs if loading the page layout with "textmedia"
+elements.
+
 This is an extension which is used to test and analyze problems related
 to DI and XCLASS in TYPO3.
 
@@ -32,20 +35,8 @@ But if the class was added, via XCLASS, the following error was displayed:
         // Create new instance and call constructor with parameters
         $instance = new $finalClassName(...$constructorArguments);
 
-## solution / workaround
 
-We added the following lines to make the original core class public in Services.yaml:
-
-    sypets.sypetsxclssdi.xlass_preview:
-        class: Sypets\SypetsXclassDi\Backend\PreviewRenderer\Hook\StandardContentPreviewRenderer
-
-    TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer:
-        public: true
-
-    typo3.cms.backend.preview.standardcontentpreviewrenderer: '@sypets.sypetsxclssdi.xlass_preview'
-
-
-If just adding this line, it did not work:
+Adding this line in Services.yaml did not help:
 
     TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer: '@Sypets\SypetsXclassDi\Backend\PreviewRenderer\Hook\StandardContentPreviewRenderer'
 

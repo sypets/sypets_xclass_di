@@ -9,3 +9,5 @@ defined('TYPO3') or die();
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][CoreStandardContentPreviewRenderer::class] = [
     'className' => XclassStandardContentPreviewRenderer::class
 ];
+
+

@@ -7,25 +7,37 @@ services:
   Sypets\SypetsXclassDi\:
     resource: '../Classes/*'
 
-
   # extra definitions for XCLASS's classes where the new class adds dependencies in constructor
   # https://www.derhansen.de/2021/06/how-to-use-constructor-injection-with-typo3-xclass.html
   # https://github.com/derhansen/xclass_di/issues/1
-  #
-  # alias: the service specified with @ will be injected when
-  # TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer is detected
-  # https://symfony.com/doc/current/service_container/autowiring.html#using-aliases-to-enable-autowiring
-  #TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer: '@Uniol\Unioltemplate\Backend\PreviewRenderer\Hook\StandardContentPreviewRenderer'
-  #TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer: '@uniol.unioltemplate.xlass_preview'
 
-  # (1) does not work
+  # (1) alternative to make XCLASS's class with DI contructor (of core class without constructor) work
+  #  # !!! does not work
+
   #TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer: '@Sypets\SypetsXclassDi\Backend\PreviewRenderer\Hook\StandardContentPreviewRenderer'
 
-  # (2) works
+
+  # (2) alternative to make XCLASS's class with DI contructor (of core class without constructor) work
+  #  # !!! does not work
+
+  #TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer: '@Sypets\SypetsXclassDi\Backend\PreviewRenderer\Hook\StandardContentPreviewRenderer'
+
+  #Sypets\SypetsXclassDi\Backend\PreviewRenderer\Hook\StandardContentPreviewRenderer:
+  #  public: true
+  #  autowire: false
+  #  arguments:
+  #    $assetCollector: '@TYPO3\CMS\Core\Page\AssetCollector'
+
+  # (3) alternative to make XCLASS's class with DI contructor (of core class without constructor) work
+  # !!! does not work
+
   sypets.sypetsxclssdi.xlass_preview:
     class: Sypets\SypetsXclassDi\Backend\PreviewRenderer\Hook\StandardContentPreviewRenderer
 
-  TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer:
+  Sypets\SypetsXclassDi\Backend\PreviewRenderer\Hook\StandardContentPreviewRenderer:
     public: true
 
   typo3.cms.backend.preview.standardcontentpreviewrenderer: '@sypets.sypetsxclssdi.xlass_preview'
+
+
+
