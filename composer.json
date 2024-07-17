@@ -1,0 +1,47 @@
+{
+	"name": "sypets/sypets-xclass-di",
+	"type": "typo3-cms-extension",
+	"description": "Test extension for testing DI with XCLASS in TYPO3",
+	"license": ["GPL-2.0-or-later"],
+	"keywords": [
+		"TYPO3",
+		"TYPO3 extension",
+		"test"
+	],
+	"authors": [
+		{
+			"name": "Sybille Peters",
+			"email": "sypets@gmx.de",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/sypets/sypets_xclass_di/issues",
+		"source": "https://github.com/sypets/sypets_xclass_di"
+	},
+	"config": {
+		"sort-packages": true,
+		"vendor-dir": ".Build/vendor",
+		"bin-dir": ".Build/bin",
+		"allow-plugins": {
+			"typo3/cms-composer-installers": true,
+			"typo3/class-alias-loader": true
+		}
+	},
+	"require": {
+		"php": "^8.2",
+		"typo3/cms-backend": "^11.5.30 || ^12.4.16 || ^13.2 || dev-main",
+		"typo3/cms-core": "^11.5.30 || ^12.4.16 || ^13.2 || dev-main"
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "sypets_xclass_di",
+			"web-dir": ".Build/Web"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"Sypets\\SypetsXclassDi\\": "Classes/"
+		}
+	}
+}
